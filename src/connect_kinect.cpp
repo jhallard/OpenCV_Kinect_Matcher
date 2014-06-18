@@ -27,33 +27,30 @@
 using namespace std;
 using namespace cv;
 
-
+int computeKeyFeatures(Mat img, int num);
 void imageCallback (const sensor_msgs::Image::ConstPtr& img);
 
-  Mat queryImg;
+Mat queryImg;
 vector<KeyPoint> queryKeypoints;
 Mat queryDescriptors;
+vector<string> filenames;
 
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "listener");
 
-  queryImg = imread(argv[1]);
+  if(argc < 2)
+    return -1;
 
-
-  if(queryImg.empty())
+  for(int i = 1; i < argc; i++)
   {
-    std::cout << "error";
-    //return -1;
+      string x("../pics/longhammer/");
+      x += argv[i];
+      std::cout << x;
+      filenames.push_back(x);
   }
 
-  // Detect keypoints in both images.
-  SiftFeatureDetector detector(90);
-  detector.detect(queryImg, queryKeypoints);
-
-
-  SiftDescriptorExtractor extractor;
-  extractor.compute(queryImg, queryKeypoints, queryDescriptors);
+  computeKeyFeatures(imread(filenames[0]), 90);
 
 
   cv::namedWindow(WINDOW_NAME);
@@ -68,6 +65,26 @@ int main(int argc, char **argv)
   cv::destroyWindow(WINDOW_NAME);
 
   return 0;
+}
+
+int computeKeyFeatures(Mat img, int num)
+{
+  queryImg = img;
+
+
+  if(queryImg.empty())
+  {
+    std::cout << "error";
+    return -1;
+  }
+
+  // Detect keypoints in both images.
+  SiftFeatureDetector detector(num);
+  detector.detect(queryImg, queryKeypoints);
+
+
+  SiftDescriptorExtractor extractor;
+  extractor.compute(queryImg, queryKeypoints, queryDescriptors);
 }
 
 void imageCallback (const sensor_msgs::Image::ConstPtr& img)
@@ -99,7 +116,8 @@ void imageCallback (const sensor_msgs::Image::ConstPtr& img)
 
     Mat img_matches;
     drawMatches(queryImg, queryKeypoints, trainImg, trainKeypoints, matches, img_matches);
-    cv::imshow(WINDOW_NAME, img_matches);
+    if(!img_matches.empty())
+      cv::imshow(WINDOW_NAME, img_matches);
 
 
     //cv::imshow(WINDOW_NAME, cv_ptr->image);
