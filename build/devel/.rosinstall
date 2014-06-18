@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/robotics/Desktop/openCV_Related/opencv-kinect/build/devel/setup.sh
