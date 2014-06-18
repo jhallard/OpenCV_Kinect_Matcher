@@ -44,7 +44,6 @@ int currentfile = 0;
 
 int main(int argc, char **argv)
 {
-
   ros::init(argc, argv, "listener");
 
   for(int i = 1; i < argc; i++)
@@ -65,8 +64,9 @@ int main(int argc, char **argv)
 
   ros::NodeHandle n;
 
+  // subscribe to the kinect camera publisher, only grab the RGB coordinates
   ros::Subscriber sub = n.subscribe("/camera/rgb/image_color", 4, imageCallback);
-
+;
   ros::spin();
 
   cv::destroyWindow(WINDOW_NAME);
@@ -86,9 +86,7 @@ bool changeDetectorExtractor(string type)
 
 bool computeKeyPoints(string filename)
 {
-  queryImg = imread(filename);//[0]);
-  //queryImg = imread(argv[1]);
-  //queryImg = imread("../pics/can.jpg");
+  queryImg = imread(filename);
 
   if(queryImg.empty())
   {
@@ -120,7 +118,7 @@ void imageCallback (const sensor_msgs::Image::ConstPtr& img)
   }
 
     cv::Mat trainImg = cv_ptr->image;
-    //SiftFeatureDetector detector(NP);
+
     vector<KeyPoint> trainKeypoints;
     detector->detect(trainImg, trainKeypoints);
 
@@ -134,10 +132,11 @@ void imageCallback (const sensor_msgs::Image::ConstPtr& img)
 
     Mat img_matches;
     drawMatches(queryImg, queryKeypoints, trainImg, trainKeypoints, matches, img_matches);
-    cv::imshow(WINDOW_NAME, img_matches);
+    if(!img_matches.empty())
+      cv::imshow(WINDOW_NAME, img_matches);
 
 
-    //cv::imshow(WINDOW_NAME, cv_ptr->image);
+   
     char key = cv::waitKey(2);
     switch(key)
     {
@@ -153,3 +152,4 @@ void imageCallback (const sensor_msgs::Image::ConstPtr& img)
       break;
     }
 }
+
