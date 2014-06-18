@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/robotics/Desktop/openCV_Related/opencv-kinect/src/connect_kinect.cpp
+/home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/src/connect_kinect.cpp
 ros/ros.h
-/home/robotics/Desktop/openCV_Related/opencv-kinect/src/ros/ros.h
+/home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/src/ros/ros.h
 sensor_msgs/Image.h
-/home/robotics/Desktop/openCV_Related/opencv-kinect/src/sensor_msgs/Image.h
+/home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/src/sensor_msgs/Image.h
 iostream
 -
 image_transport/image_transport.h
@@ -34,13 +34,13 @@ stdio.h
 iostream
 -
 opencv2/core/core.hpp
-/home/robotics/Desktop/openCV_Related/opencv-kinect/src/opencv2/core/core.hpp
+/home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/src/opencv2/core/core.hpp
 opencv2/features2d/features2d.hpp
-/home/robotics/Desktop/openCV_Related/opencv-kinect/src/opencv2/features2d/features2d.hpp
+/home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/src/opencv2/features2d/features2d.hpp
 opencv2/nonfree/nonfree.hpp
 -
 opencv2/highgui/highgui.hpp
-/home/robotics/Desktop/openCV_Related/opencv-kinect/src/opencv2/highgui/highgui.hpp
+/home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/src/opencv2/highgui/highgui.hpp
 vector
 -
 

@@ -5,15 +5,15 @@
 # it emulates the modifications of the setup script without recurring computations
 
 # new environment variables
-export CATKIN_TEST_RESULTS_DIR="/home/robotics/Desktop/openCV_Related/opencv-kinect/build/test_results"
-export ROS_TEST_RESULTS_DIR="/home/robotics/Desktop/openCV_Related/opencv-kinect/build/test_results"
+export CATKIN_TEST_RESULTS_DIR="/home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/build/test_results"
+export ROS_TEST_RESULTS_DIR="/home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/build/test_results"
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/robotics/Desktop/openCV_Related/opencv-kinect/build/devel:$CMAKE_PREFIX_PATH"
-export CPATH="/home/robotics/Desktop/openCV_Related/opencv-kinect/build/devel/include:$CPATH"
-export LD_LIBRARY_PATH="/home/robotics/Desktop/openCV_Related/opencv-kinect/build/devel/lib:$LD_LIBRARY_PATH"
-export PATH="/home/robotics/Desktop/openCV_Related/opencv-kinect/build/devel/bin:$PATH"
-export PKG_CONFIG_PATH="/home/robotics/Desktop/openCV_Related/opencv-kinect/build/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
-export PYTHONPATH="/home/robotics/Desktop/openCV_Related/opencv-kinect/build/devel/lib/python2.7/dist-packages:$PYTHONPATH"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/robotics/Desktop/openCV_Related/opencv-kinect/build/devel/share/common-lisp"
-export ROS_PACKAGE_PATH="/home/robotics/Desktop/openCV_Related/opencv-kinect:$ROS_PACKAGE_PATH"
+export CMAKE_PREFIX_PATH="/home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/build/devel:$CMAKE_PREFIX_PATH"
+export CPATH="/home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/build/devel/include:$CPATH"
+export LD_LIBRARY_PATH="/home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/build/devel/lib:$LD_LIBRARY_PATH"
+export PATH="/home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/build/devel/bin:$PATH"
+export PKG_CONFIG_PATH="/home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/build/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PYTHONPATH="/home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/build/devel/lib/python2.7/dist-packages:$PYTHONPATH"
+export ROSLISP_PACKAGE_DIRECTORIES="/home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/build/devel/share/common-lisp"
+export ROS_PACKAGE_PATH="/home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher:$ROS_PACKAGE_PATH"

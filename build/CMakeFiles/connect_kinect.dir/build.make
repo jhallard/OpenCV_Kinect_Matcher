@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/robotics/Desktop/openCV_Related/opencv-kinect
+CMAKE_SOURCE_DIR = /home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/robotics/Desktop/openCV_Related/opencv-kinect/build
+CMAKE_BINARY_DIR = /home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/connect_kinect.dir/depend.make
@@ -48,17 +48,17 @@ include CMakeFiles/connect_kinect.dir/flags.make
 
 CMakeFiles/connect_kinect.dir/src/connect_kinect.cpp.o: CMakeFiles/connect_kinect.dir/flags.make
 CMakeFiles/connect_kinect.dir/src/connect_kinect.cpp.o: ../src/connect_kinect.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robotics/Desktop/openCV_Related/opencv-kinect/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/connect_kinect.dir/src/connect_kinect.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/connect_kinect.dir/src/connect_kinect.cpp.o -c /home/robotics/Desktop/openCV_Related/opencv-kinect/src/connect_kinect.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/connect_kinect.dir/src/connect_kinect.cpp.o -c /home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/src/connect_kinect.cpp
 
 CMakeFiles/connect_kinect.dir/src/connect_kinect.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/connect_kinect.dir/src/connect_kinect.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robotics/Desktop/openCV_Related/opencv-kinect/src/connect_kinect.cpp > CMakeFiles/connect_kinect.dir/src/connect_kinect.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/src/connect_kinect.cpp > CMakeFiles/connect_kinect.dir/src/connect_kinect.cpp.i
 
 CMakeFiles/connect_kinect.dir/src/connect_kinect.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/connect_kinect.dir/src/connect_kinect.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robotics/Desktop/openCV_Related/opencv-kinect/src/connect_kinect.cpp -o CMakeFiles/connect_kinect.dir/src/connect_kinect.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/src/connect_kinect.cpp -o CMakeFiles/connect_kinect.dir/src/connect_kinect.cpp.s
 
 CMakeFiles/connect_kinect.dir/src/connect_kinect.cpp.o.requires:
 .PHONY : CMakeFiles/connect_kinect.dir/src/connect_kinect.cpp.o.requires
@@ -129,6 +129,6 @@ CMakeFiles/connect_kinect.dir/clean:
 .PHONY : CMakeFiles/connect_kinect.dir/clean
 
 CMakeFiles/connect_kinect.dir/depend:
-	cd /home/robotics/Desktop/openCV_Related/opencv-kinect/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/robotics/Desktop/openCV_Related/opencv-kinect /home/robotics/Desktop/openCV_Related/opencv-kinect /home/robotics/Desktop/openCV_Related/opencv-kinect/build /home/robotics/Desktop/openCV_Related/opencv-kinect/build /home/robotics/Desktop/openCV_Related/opencv-kinect/build/CMakeFiles/connect_kinect.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher /home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher /home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/build /home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/build /home/jhallard/HMCREU/OpenCvRelated/OpenCV_Kinect_Matcher/build/CMakeFiles/connect_kinect.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/connect_kinect.dir/depend
 
