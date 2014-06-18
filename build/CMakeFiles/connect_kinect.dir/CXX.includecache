@@ -43,6 +43,8 @@ opencv2/highgui/highgui.hpp
 /home/robotics/Desktop/openCV_Related/opencv-kinect/src/opencv2/highgui/highgui.hpp
 vector
 -
+string
+-
 
 /opt/ros/hydro/include/XmlRpcDecl.h
 ros/macros.h
