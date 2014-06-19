@@ -25,7 +25,7 @@
 #include <string>
 
 #define WINDOW_NAME "Kinect RGB Image"
-#define NP 100
+#define NP 40
 using namespace std;
 using namespace cv;
 
@@ -41,6 +41,7 @@ vector<KeyPoint> queryKeypoints;
 Mat queryDescriptors;
 vector<string> filenames;
 int currentfile = 0;
+bool PAUSE = false;
 
 int main(int argc, char **argv)
 {
@@ -48,11 +49,11 @@ int main(int argc, char **argv)
 
   for(int i = 1; i < argc; i++)
   {
-    string x("../pics/hands/");
+    string x("../pics/longhammer/");
     filenames.push_back(x+argv[i]);
   }
   cv::initModule_nonfree();
-  changeDetectorExtractor("MSER");
+  changeDetectorExtractor("SIFT");
 
   if(!computeKeyPoints(filenames[currentfile]))
   {
@@ -76,11 +77,11 @@ int main(int argc, char **argv)
 
 bool changeDetectorExtractor(string type)
 {
-  detector = cv::FeatureDetector::create(type);
+  detector = new cv::SurfFeatureDetector(4000,8, 6, true, true);//cv::FeatureDetector::create(type);
   if(detector==NULL)
     std::cout<<"detector NULL"<<std::endl;
 
-  extractor = cv::DescriptorExtractor::create("SURF");
+  extractor = cv::DescriptorExtractor::create("SIFT");
   if(extractor==NULL){std::cout<<"descriptorExtractor NULL"<<std::endl;}
 }
 
@@ -107,34 +108,36 @@ void imageCallback (const sensor_msgs::Image::ConstPtr& img)
 {
   cv_bridge::CvImagePtr cv_ptr;
 
-  try 
+  if(!PAUSE)
   {
-    cv_ptr = cv_bridge::toCvCopy(*img, sensor_msgs::image_encodings::BGR8); //enc::RGB8 also used
+    try 
+      {
+        cv_ptr = cv_bridge::toCvCopy(*img, sensor_msgs::image_encodings::BGR8); //enc::RGB8 also used
+      }
+      catch (cv_bridge::Exception& e) 
+      {
+        ROS_ERROR("cv_bridge exception: %s", e.what());
+        return;
+      }
+
+      cv::Mat trainImg = cv_ptr->image;
+
+      vector<KeyPoint> trainKeypoints;
+      detector->detect(trainImg, trainKeypoints);
+
+      //SiftDescriptorExtractor extractor;
+      Mat trainDescriptors;
+      extractor->compute(trainImg, trainKeypoints, trainDescriptors);
+
+      cv::FlannBasedMatcher matcher (new cv::flann::KDTreeIndexParams(2), new cv::flann::SearchParams(32));
+      vector<DMatch> matches;
+      matcher.match(queryDescriptors, trainDescriptors, matches);
+
+      Mat img_matches;
+      drawMatches(queryImg, queryKeypoints, trainImg, trainKeypoints, matches, img_matches);
+      if(!img_matches.empty())
+        cv::imshow(WINDOW_NAME, img_matches);
   }
-  catch (cv_bridge::Exception& e) 
-  {
-    ROS_ERROR("cv_bridge exception: %s", e.what());
-    return;
-  }
-
-    cv::Mat trainImg = cv_ptr->image;
-
-    vector<KeyPoint> trainKeypoints;
-    detector->detect(trainImg, trainKeypoints);
-
-    //SiftDescriptorExtractor extractor;
-    Mat trainDescriptors;
-    extractor->compute(trainImg, trainKeypoints, trainDescriptors);
-
-    cv::FlannBasedMatcher matcher (new cv::flann::KDTreeIndexParams(4), new cv::flann::SearchParams(64));
-    vector<DMatch> matches;
-    matcher.match(queryDescriptors, trainDescriptors, matches);
-
-    Mat img_matches;
-    drawMatches(queryImg, queryKeypoints, trainImg, trainKeypoints, matches, img_matches);
-    if(!img_matches.empty())
-      cv::imshow(WINDOW_NAME, img_matches);
-
 
    
     char key = cv::waitKey(2);
@@ -148,6 +151,10 @@ void imageCallback (const sensor_msgs::Image::ConstPtr& img)
         if(!computeKeyPoints(filenames[currentfile]))
           ROS_ERROR("Could not load new file in image callback");
           return;
+      break;
+
+      case ' ' :
+       PAUSE =! PAUSE;
 
       break;
     }
