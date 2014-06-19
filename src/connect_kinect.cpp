@@ -1,28 +1,19 @@
-#include "ros/ros.h"
-#include "sensor_msgs/Image.h"
-
+#include <vector>
+#include <string>
+#include <stdio.h>
 #include <iostream>
 
-#include <image_transport/image_transport.h>
+#include "ros/ros.h"
+#include <opencv2/opencv.hpp>
+#include "sensor_msgs/Image.h"
 #include <cv_bridge/cv_bridge.h>
+#include <image_transport/image_transport.h>
 #include <sensor_msgs/image_encodings.h>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
-
-#include <opencv2/opencv.hpp>
 #include <opencv2/nonfree/nonfree.hpp>
-
-#include <opencv/cv.h>
-
-#include <stdio.h>
-#include <iostream>
 #include "opencv2/core/core.hpp"
 #include "opencv2/features2d/features2d.hpp"
-#include <opencv2/nonfree/nonfree.hpp>
-#include "opencv2/highgui/highgui.hpp"
-
-#include <vector>
-#include <string>
 
 #define WINDOW_NAME "Kinect RGB Image"
 #define NP 40
@@ -77,12 +68,13 @@ int main(int argc, char **argv)
 
 bool changeDetectorExtractor(string type)
 {
-  detector = new cv::SurfFeatureDetector(4000,8, 6, true, true);//cv::FeatureDetector::create(type);
+  detector = new cv::SiftFeatureDetector(50);//SurfFeatureDetector(3000, 6, 2, true, true);//cv::FeatureDetector::create(type);
   if(detector==NULL)
     std::cout<<"detector NULL"<<std::endl;
 
   extractor = cv::DescriptorExtractor::create("SIFT");
-  if(extractor==NULL){std::cout<<"descriptorExtractor NULL"<<std::endl;}
+  if(extractor==NULL)
+    std::cout<<"descriptorExtractor NULL"<<std::endl;
 }
 
 bool computeKeyPoints(string filename)
